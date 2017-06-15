@@ -134,52 +134,51 @@ class EmailTypoTest < Minitest::Test
     end
   end
 
-  %w[
-    jo\ hn@example.com
-    jo\'hn@example.com
-    john.@example.com
-    john@#example.com
-    john@.example.com
-    john@@example.com
-    john@\#example.com
-    john@example,com
-    john@example..com
-    john@example.c0m
-    john@example.clom
-    john@example.cm
-    john@example.cmo
-    john@example.co,
-    john@example.co.
-    john@example.co<
-    john@example.co>
-    john@example.coim
-    john@example.cok
-    john@example.colm
-    john@example.com
-    JOHN@EXAMPLE.COM
-    john@example.com,
-    john@example.com.
-    john@example.com.com
-    john@example.com\
-    john@example.com\'
-    john@example.com\\
-    john@example.comj
-    john@example.comm
-    john@example.comme
-    john@example.comn
-    john@example.con
-    john@example.con.com
-    john@example.conm
-    john@example.coom
-    john@example.copm
-    john@example.cpm
-    john@example.ocm
-    john@example.om
-    john@example.vom
-    john@example.xom
-    john@examplec.om
-    john@examplecom
-    john\#@example.com
+  [
+    "jo\ hn@example.com",
+    "jo\'hn@example.com",
+    "john.@example.com",
+    "john@#example.com",
+    "john@.example.com",
+    "john@@example.com",
+    "john@example,com",
+    "john@example..com",
+    "john@example.c0m",
+    "john@example.clom",
+    "john@example.cm",
+    "john@example.cmo",
+    "john@example.co,",
+    "john@example.co.",
+    "john@example.co<",
+    "john@example.co>",
+    "john@example.coim",
+    "john@example.cok",
+    "john@example.colm",
+    "john@example.com",
+    "JOHN@EXAMPLE.COM",
+    "john@example.com,",
+    "john@example.com.",
+    "john@example.com.com",
+    "john@example.com\"",
+    "john@example.com\'",
+    "john@example.com\\",
+    "john@example.comj",
+    "john@example.comm",
+    "john@example.comme",
+    "john@example.comn",
+    "john@example.con",
+    "john@example.con.com",
+    "john@example.conm",
+    "john@example.coom",
+    "john@example.copm",
+    "john@example.cpm",
+    "john@example.ocm",
+    "john@example.om",
+    "john@example.vom",
+    "john@example.xom",
+    "john@examplec.om",
+    "john@examplecom",
+    "john\#@example.com"
   ].each do |email|
     test "fix generic dot com account (#{email})" do
       assert_equal "john@example.com", EmailTypo.fix(email)
