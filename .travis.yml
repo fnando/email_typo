@@ -1,0 +1,14 @@
+sudo: false
+cache: bundler
+language: ruby
+rvm:
+- 2.4.1
+before_install: gem install bundler
+script: bundle exec rake
+notifications:
+  email: false
+after_success:
+- bundle exec codeclimate-test-reporter
+env:
+  global:
+    secure: NxLs+gcCgqm0cweEQ6abyZ7njE9JUNzycrSFO0OmEQUfiKl0ArIu26NrcjQvL3XvUiikmAcdzavA+5P4vMsQGFkjwqE0bwGxg+cu5a3nzNBoyhOKlQZQ+MTsWs3kX8VqADNa2VdosVkbf/n8Q9eFmV712NWZqPHGvT56HCpkQIQMo5h1/SuUJzVfbw+3P4x11++/hifodhq2xsGEzvaY0vThEk1BbVO2REeQsvnZx3Vs3m+wjmovhlpbL2PqAVBshbrlsBx6PKo55ubQjv4z0PByPAkk5bn5CY/SXw7xItw8s0camHj8bYCzJyjvsCFkLbKYiwcymy4mCAZz8SHZWf7FzKrZFYBQfPIlvcaIdN0gxYSmhUTZ+F7/Q12GS8ZNxi0QKyy7/crib1NKCYea+fYp9tX+RR+kTDRgxadzZDtHywjuwG9ttHuki8yQiL2Ma7Ecw1LbFVeKz2v/L3oxINUJ+uMHZVPOrpd+sO5+YTHN2xmuqPNbQnoOdNiT06fRQkbIPD11UfgRb1zegyxRmgc4H4n/Ps0OpuI5S4fafINFW9W0EhJjtOT/WJTy6nbKL1Rk8YeZBrK0JZSr/zZc6dt9FrZZaj2gjko9Zvb/wIP+nACXm1fV9+jIEoE2CzYdFaOQT0uAKbhQqnArZ5/RXg98nmuPoEPyjtgfWjPcINU=
