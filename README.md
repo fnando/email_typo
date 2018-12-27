@@ -1,6 +1,6 @@
 # EmailTypo
 
-[![Travis-CI](https://travis-ci.org/fnando/email_typo.png)](https://travis-ci.org/fnando/email_typo)
+[![Travis-CI](https://travis-ci.org/fnando/email_typo.svg)](https://travis-ci.org/fnando/email_typo)
 [![Code Climate](https://codeclimate.com/github/fnando/email_typo/badges/gpa.svg)](https://codeclimate.com/github/fnando/email_typo)
 [![Test Coverage](https://codeclimate.com/github/fnando/email_typo/badges/coverage.svg)](https://codeclimate.com/github/fnando/email_typo/coverage)
 [![Gem](https://img.shields.io/gem/v/email_typo.svg)](https://rubygems.org/gems/email_typo)
