@@ -16,6 +16,7 @@ require_relative "./email_typo/known_dot_com"
 require_relative "./email_typo/period_around_at_sign"
 require_relative "./email_typo/providers"
 require_relative "./email_typo/remove_invalid_chars"
+require_relative "./email_typo/remove_mailto"
 require_relative "./email_typo/transposed_periods"
 require_relative "./email_typo/yahoo"
 
@@ -26,6 +27,7 @@ module EmailTypo
   end
 
   self.default_processors = [
+    RemoveMailTo,
     RemoveInvalidChars,
     TransposedPeriods,
     PeriodAroundAtSign,

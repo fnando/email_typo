@@ -181,7 +181,7 @@ class EmailTypoTest < Minitest::Test
     "john@examplec.om",
     "john@examplecom",
     "john\#@example.com",
-    "john@example.c9m"
+    "mailto:john@example.com"
   ].each do |email|
     test "fix generic dot com account (#{email})" do
       assert_equal "john@example.com", EmailTypo.fix(email)
