@@ -243,6 +243,7 @@ class EmailTypoTest < Minitest::Test
     john@yahoo.co.uk
     john@ymail.com
     john@gial.edu
+    john@support.comcastbiz.net
   ].each do |email|
     test "don't mess with #{email}" do
       assert_equal email, EmailTypo.fix(email)
