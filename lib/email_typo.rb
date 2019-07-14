@@ -12,6 +12,7 @@ require_relative "./email_typo/dot_org"
 require_relative "./email_typo/gmail"
 require_relative "./email_typo/googlemail"
 require_relative "./email_typo/hotmail"
+require_relative "./email_typo/icloud"
 require_relative "./email_typo/known_dot_com"
 require_relative "./email_typo/period_around_at_sign"
 require_relative "./email_typo/providers"
@@ -42,6 +43,7 @@ module EmailTypo
     Gmail,
     Googlemail,
     Hotmail,
+    Icloud,
     KnownDotCom,
     Yahoo
   ]
