@@ -181,7 +181,9 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     "john@examplec.om",
     "john@examplecom",
     "john\#@example.com",
-    "mailto:john@example.com"
+    "mailto:john@example.com",
+    "john@example.vcom",
+    "john@example.xcom"
   ].each do |email|
     test "fix generic dot com account (#{email})" do
       assert_equal "john@example.com", EmailTypo.fix(email)
