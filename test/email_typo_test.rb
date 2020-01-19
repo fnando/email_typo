@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class EmailTypoTest < Minitest::Test
+class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
   %w[
     john.@gmail.co
     john.@gmail.com
@@ -298,6 +298,7 @@ class EmailTypoTest < Minitest::Test
     john@iclod.com
     john@iclud.com
     john@icluod.com
+    john@icld.com
   ].each do |email|
     test "fix icloud account (#{email})" do
       assert_equal "john@icloud.com", EmailTypo.fix(email)
