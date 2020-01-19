@@ -8,7 +8,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Nando Vieira"]
   spec.email         = ["fnando.vieira@gmail.com"]
 
-  spec.summary       = "Clean up e-mail strings when the user's made a typo (like 'gmail.cmo')."
+  spec.summary       = %w[
+    Clean up e-mail strings when the user's made a typo (like 'gmail.cmo').
+  ].join(" ")
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/fnando/email_typo"
   spec.license       = "MIT"
@@ -21,8 +23,10 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler"
-  spec.add_development_dependency "rake"
   spec.add_development_dependency "minitest-utils"
   spec.add_development_dependency "pry-meta"
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rubocop"
+  spec.add_development_dependency "rubocop-fnando"
   spec.add_development_dependency "simplecov"
 end
