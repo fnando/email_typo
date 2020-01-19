@@ -50,11 +50,16 @@ module EmailTypo
     Yahoo
   ]
 
-  def self.fix(email, processors = default_processors)
+  def self.call(email, processors = default_processors)
     return unless email
 
     processors.reduce(email.downcase) do |processed_email, processor|
       processor.call(processed_email)
     end
+  end
+
+  def self.fix(email, processors = default_processors)
+    warn "EmailTypo.fix is deprecated; use EmailTypo.call instead."
+    call(email, processors)
   end
 end

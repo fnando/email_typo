@@ -32,10 +32,10 @@ Or install it yourself as:
 
 ## Usage
 
-To fix any typos, just use `EmailTypo.fix(email)`.
+To fix any typos, just use `EmailTypo.call(email)`.
 
 ```ruby
-EmailTypo.fix("john.doe@gmail.co")
+EmailTypo.call("john.doe@gmail.co")
 #=> "john.doe@gmail.com"
 ```
 

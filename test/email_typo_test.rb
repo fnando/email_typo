@@ -3,6 +3,15 @@
 require "test_helper"
 
 class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
+  test "shows deprecation message" do
+    _, stderr = capture_io do
+      EmailTypo.fix("john@gmail.com")
+    end
+
+    assert_equal "EmailTypo.fix is deprecated; use EmailTypo.call instead.",
+                 stderr.chomp
+  end
+
   %w[
     john.@gmail.co
     john.@gmail.com
@@ -24,7 +33,7 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     john@gnail.com
   ].each do |email|
     test "fix gmail account (#{email})" do
-      assert_equal "john@gmail.com", EmailTypo.fix(email)
+      assert_equal "john@gmail.com", EmailTypo.call(email)
     end
   end
 
@@ -44,7 +53,7 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     john@gmail.couk
   ].each do |email|
     test "fix international gmail account (#{email})" do
-      assert_equal "john@gmail.co.uk", EmailTypo.fix(email)
+      assert_equal "john@gmail.co.uk", EmailTypo.call(email)
     end
   end
 
@@ -53,7 +62,7 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     john@example.cojp
   ].each do |email|
     test "fix .co.jp account (#{email})" do
-      assert_equal "john@example.co.jp", EmailTypo.fix(email)
+      assert_equal "john@example.co.jp", EmailTypo.call(email)
     end
   end
 
@@ -79,7 +88,7 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     john@goooglemail.net
   ].each do |email|
     test "fix googlemail account (#{email})" do
-      assert_equal "john@googlemail.com", EmailTypo.fix(email)
+      assert_equal "john@googlemail.com", EmailTypo.call(email)
     end
   end
 
@@ -99,7 +108,7 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     john@uahoo.com
   ].each do |email|
     test "fix yahoo account (#{email})" do
-      assert_equal "john@yahoo.com", EmailTypo.fix(email)
+      assert_equal "john@yahoo.com", EmailTypo.call(email)
     end
   end
 
@@ -117,7 +126,7 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     john@hotnail.com
   ].each do |email|
     test "fix hotmail account (#{email})" do
-      assert_equal "john@hotmail.com", EmailTypo.fix(email)
+      assert_equal "john@hotmail.com", EmailTypo.call(email)
     end
   end
 
@@ -130,7 +139,7 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     john@ol.com
   ].each do |email|
     test "fix aol account (#{email})" do
-      assert_equal "john@aol.com", EmailTypo.fix(email)
+      assert_equal "john@aol.com", EmailTypo.call(email)
     end
   end
 
@@ -186,7 +195,7 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     "john@example.xcom"
   ].each do |email|
     test "fix generic dot com account (#{email})" do
-      assert_equal "john@example.com", EmailTypo.fix(email)
+      assert_equal "john@example.com", EmailTypo.call(email)
     end
   end
 
@@ -200,7 +209,7 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     john@examplenet
   ].each do |email|
     test "fix dot net account (#{email})" do
-      assert_equal "john@example.net", EmailTypo.fix(email)
+      assert_equal "john@example.net", EmailTypo.call(email)
     end
   end
 
@@ -212,7 +221,7 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     john@exampleorg
   ].each do |email|
     test "fix dot org account (#{email})" do
-      assert_equal "john@example.org", EmailTypo.fix(email)
+      assert_equal "john@example.org", EmailTypo.call(email)
     end
   end
 
@@ -251,7 +260,7 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     john@chengmail.net
   ].each do |email|
     test "don't mess with #{email}" do
-      assert_equal email, EmailTypo.fix(email)
+      assert_equal email, EmailTypo.call(email)
     end
   end
 
@@ -271,14 +280,14 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
   ].each do |tld|
     test "accept #{tld} account" do
       email = "john@example.#{tld}"
-      assert_equal email, EmailTypo.fix(email)
+      assert_equal email, EmailTypo.call(email)
     end
   end
 
   %w[cm et ne om].each do |tld|
     test "reject #{tld} account" do
       email = "john@example.#{tld}"
-      refute_equal email, EmailTypo.fix(email)
+      refute_equal email, EmailTypo.call(email)
     end
   end
 
@@ -289,7 +298,7 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     john@verzon.net
   ].each do |email|
     test "fix verizon account (#{email})" do
-      assert_equal "john@verizon.net", EmailTypo.fix(email)
+      assert_equal "john@verizon.net", EmailTypo.call(email)
     end
   end
 
@@ -303,7 +312,7 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     john@icld.com
   ].each do |email|
     test "fix icloud account (#{email})" do
-      assert_equal "john@icloud.com", EmailTypo.fix(email)
+      assert_equal "john@icloud.com", EmailTypo.call(email)
     end
   end
 
@@ -313,7 +322,7 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     john@outlook.net
   ].each do |email|
     test "fix outlook account (#{email})" do
-      assert_equal "john@outlook.com", EmailTypo.fix(email)
+      assert_equal "john@outlook.com", EmailTypo.call(email)
     end
   end
 
@@ -326,7 +335,7 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     john@cmcast.net
   ].each do |email|
     test "fix comcast account (#{email})" do
-      assert_equal "john@comcast.net", EmailTypo.fix(email)
+      assert_equal "john@comcast.net", EmailTypo.call(email)
     end
   end
 end
