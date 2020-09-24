@@ -2,6 +2,6 @@
 
 module EmailTypo
   AddMissingPeriod = lambda do |email|
-    email.gsub(/([^\.])(com|org|net)$/, "\\1.\\2")
+    email.gsub(/([^.])(com|org|net)$/, "\\1.\\2")
   end
 end
