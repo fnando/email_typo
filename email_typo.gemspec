@@ -7,10 +7,10 @@ Gem::Specification.new do |spec|
   spec.version       = EmailTypo::VERSION
   spec.authors       = ["Nando Vieira"]
   spec.email         = ["fnando.vieira@gmail.com"]
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
-  spec.summary       = %w[
-    Clean up e-mail strings when the user's made a typo (like 'gmail.cmo').
-  ].join(" ")
+  spec.summary = "Clean up e-mail strings when the user's made a typo " \
+                 "(like 'gmail.cmo')."
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/fnando/email_typo"
   spec.license       = "MIT"
