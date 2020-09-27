@@ -2,6 +2,9 @@
 
 module EmailTypo
   Gmail = lambda do |email|
-    email.gsub(/@g[nm]{0,2}s?[ail]{1,2}[aiklmou]{0,3}\.(?!gov|edu)/, "@gmail.")
+    email.gsub(
+      /@ga?e?i?o?r?g?[nm]{0,2}s?[ail]{1,2}[aiklmou]{0,3}\.(?!gov|edu)/,
+      "@gmail."
+    )
   end
 end
