@@ -275,6 +275,8 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     john@dogmail.net
     john@engaol.net
     john@chengmail.net
+    john@gial.ac.in
+    john@gla.gov
   ].each do |email|
     test "don't mess with #{email}" do
       assert_equal email, EmailTypo.call(email)
