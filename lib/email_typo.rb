@@ -10,6 +10,7 @@ require_relative "./email_typo/dot_com"
 require_relative "./email_typo/dot_net"
 require_relative "./email_typo/dot_org"
 require_relative "./email_typo/fix_extraneous_letter_dot_com"
+require_relative "./email_typo/fix_extraneous_numbers"
 require_relative "./email_typo/gmail"
 require_relative "./email_typo/googlemail"
 require_relative "./email_typo/hotmail"
@@ -35,6 +36,7 @@ module EmailTypo
     PeriodAroundAtSign,
     DifferentTlds,
     FixExtraneousLetterDotCom,
+    FixExtraneousNumbers,
     AddMissingM,
     AddMissingPeriod,
     Providers,

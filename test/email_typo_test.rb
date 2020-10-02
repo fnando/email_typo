@@ -37,6 +37,8 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     john@gomail.com
     john@ggmail.com
     john@grmail.com
+    john@gmail.com.co
+    john@gmail.c
   ].each do |email|
     test "fix gmail account (#{email})" do
       assert_equal "john@gmail.com", EmailTypo.call(email)
@@ -141,6 +143,7 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     john@hotnail.com
     john@hormail.com
     john@hortmail.com
+    john@otmail.com
   ].each do |email|
     test "fix hotmail account (#{email})" do
       assert_equal "john@hotmail.com", EmailTypo.call(email)
@@ -355,6 +358,14 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
   ].each do |email|
     test "fix comcast account (#{email})" do
       assert_equal "john@comcast.net", EmailTypo.call(email)
+    end
+  end
+
+  %w[
+    john@example.com1
+  ].each do |email|
+    test "fix extraneous numbers (#{email})" do
+      assert_equal "john@example.com", EmailTypo.call(email)
     end
   end
 end
