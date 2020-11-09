@@ -2,6 +2,8 @@
 
 module EmailTypo
   DotNet = lambda do |email|
-    email.gsub(/\.(nte*|n*et*)$/, ".net")
+    email
+      .gsub(/\.(nte*|n*et*|ney)$/, ".net")
+      .gsub(/\.met$/, ".net")
   end
 end

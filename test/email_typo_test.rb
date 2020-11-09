@@ -68,6 +68,7 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
   %w[
     john@example.co.lp
     john@example.cojp
+    john@example.co.p
   ].each do |email|
     test "fix .co.jp account (#{email})" do
       assert_equal "john@example.co.jp", EmailTypo.call(email)
@@ -144,6 +145,7 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     john@hormail.com
     john@hortmail.com
     john@otmail.com
+    john@hotmail.comr
   ].each do |email|
     test "fix hotmail account (#{email})" do
       assert_equal "john@hotmail.com", EmailTypo.call(email)
@@ -227,6 +229,8 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     john@example.nett
     john@example.net
     john@examplenet
+    john@example.ney
+    john@example.met
   ].each do |email|
     test "fix dot net account (#{email})" do
       assert_equal "john@example.net", EmailTypo.call(email)
@@ -280,26 +284,14 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
     john@chengmail.net
     john@gial.ac.in
     john@gla.gov
+    john@hanmail.net
   ].each do |email|
     test "don't mess with #{email}" do
       assert_equal email, EmailTypo.call(email)
     end
   end
 
-  %w[
-    ac ad ae af ag ai al am an ao aq ar as at au aw ax az ba bb bd be bf bg bh
-    bi bj bm bn bo br bs bt bv bw by bz ca cc cd cf cg ch ci ck cl cn co cr cs
-    cu cv cx cy cz dd de dj dk dm do dz ec ee eg eh er es eu fi fjfk fm fo fr
-    ga gb gd ge gf gg gh gi gl gm gn gp gq gr gs gt gu gw gy hk hm hn hr ht
-    hu id ie il im in io iq ir is it je jm jo jp ke kg kh ki km kn kp kr kw
-    ky kz la lb lc li lk lr ls lt lu lv ly ma mc md me mg mh mk ml mn mp mq
-    mr ms mt mu mv mw mx my mz na nc nf ng ni nl no np nr nu nz pa pe pf pg
-    ph pk pl pm pn pr ps pt pw py qa re ro rs ru rw sa sb sc sd se sg sh si
-    sj sk sl sm sn so sr ss st su sv sx sy sz tc td tf tg th tj tk tl tm tn
-    to tp tr tt tv tw tz ua ug uk us uy uz va vc ve vg vi vn vu wf ws ye yt
-    yu za zm zw aero asia biz cat com coop info int jobs mobi museum name net
-    org post pro tel travel xxx edu gov mil
-  ].each do |tld|
+  (EmailData.tlds - %w[unicom comsec et free om mm mo mom ne cm]).each do |tld|
     test "accept #{tld} account" do
       email = "john@example.#{tld}"
       assert_equal email, EmailTypo.call(email)
@@ -366,6 +358,44 @@ class EmailTypoTest < Minitest::Test # rubocop:disable Metrics/ClassLength
   ].each do |email|
     test "fix extraneous numbers (#{email})" do
       assert_equal "john@example.com", EmailTypo.call(email)
+    end
+  end
+
+  {
+    "john@example.co.ul" => "john@example.co.uk",
+    "john@example.co.uj" => "john@example.co.uk",
+    "john@example.rul" => "john@example.ru",
+    "john@example.ry" => "john@example.ru",
+    "john@example.r" => "john@example.ru",
+    "john@example.iit" => "john@example.it",
+    "john@example.itt" => "john@example.it",
+    "john@example.com/.au" => "john@example.com.au",
+    "john@example.co.u" => "john@example.co.uk",
+    "john@example.co.k" => "john@example.co.uk",
+    "john@example.co.ukl" => "john@example.co.uk",
+    "`john@example.com" => "john@example.com",
+    "john@example.dek" => "john@example.de",
+    "john@example.com.brr" => "john@example.com.br",
+    "john@example.com.vr" => "john@example.com.br",
+    "john@example.fe" => "john@example.fr",
+    "john@example.gob" => "john@example.gov",
+    "john@example.gob.br" => "john@example.gov.br",
+    "john@gobblin.example.gob" => "john@gobblin.example.gov",
+    "john@example.ffr" => "john@example.fr",
+    "john@example.ed" => "john@example.edu",
+    "john@example.ed.br" => "john@example.edu.br",
+    "john@ed.example.com" => "john@ed.example.com",
+    "john@example.edi" => "john@example.edu",
+    "john@example.edi.br" => "john@example.edu.br",
+    "john@edi.example.com" => "john@edi.example.com",
+    "john@example.com.mxg" => "john@example.com.mx",
+    "john@example.comar" => "john@example.com.ar",
+    "john@example.co.ar" => "john@example.com.ar",
+    "john@example.comau" => "john@example.com.au",
+    "john@example.co.au" => "john@example.com.au"
+  }.each do |actual, expected|
+    test "fix emails (#{actual})" do
+      assert_equal expected, EmailTypo.call(actual)
     end
   end
 end

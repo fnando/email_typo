@@ -1,6 +1,6 @@
-# EmailTypo
+# email_typo
 
-[![Travis-CI](https://travis-ci.org/fnando/email_typo.svg)](https://travis-ci.org/fnando/email_typo)
+[![Tests](https://github.com/fnando/email_typo/workflows/Tests/badge.svg)](https://github.com/fnando/email_typo)
 [![Code Climate](https://codeclimate.com/github/fnando/email_typo/badges/gpa.svg)](https://codeclimate.com/github/fnando/email_typo)
 [![Gem](https://img.shields.io/gem/v/email_typo.svg)](https://rubygems.org/gems/email_typo)
 [![Gem](https://img.shields.io/gem/dt/email_typo.svg)](https://rubygems.org/gems/email_typo)
@@ -22,19 +22,15 @@ without polluting the `String` class and with easier extension support.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+```bash
+gem install email_typo
+```
+
+Or add the following line to your project's Gemfile:
 
 ```ruby
 gem "email_typo"
 ```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install email_typo
 
 ## Usage
 
@@ -55,26 +51,27 @@ EmailTypo.default_processors << lambda do |email|
 end
 ```
 
-## Development
+## Maintainer
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run
-`rake test` to run the tests. You can also run `bin/console` for an interactive
-prompt that will allow you to experiment.
+- [Nando Vieira](https://github.com/fnando)
 
-To install this gem onto your local machine, run `bundle exec rake install`. To
-release a new version, update the version number in `version.rb`, and then run
-`bundle exec rake release`, which will create a git tag for the version, push
-git commits and tags, and push the `.gem` file to
-[rubygems.org](https://rubygems.org).
+## Contributors
+
+- https://github.com/fnando/email_typo/contributors
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at
-https://github.com/fnando/email_typo. This project is intended to be a safe,
-welcoming space for collaboration, and contributors are expected to adhere to
-the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+For more details about how to contribute, please read
+https://github.com/fnando/email_typo/blob/main/CONTRIBUTING.md.
 
 ## License
 
 The gem is available as open source under the terms of the
-[MIT License](http://opensource.org/licenses/MIT).
+[MIT License](https://opensource.org/licenses/MIT). A copy of the license can be
+found at https://github.com/fnando/email_typo/blob/main/LICENSE.md.
+
+## Code of Conduct
+
+Everyone interacting in the email_typo project's codebases, issue trackers, chat
+rooms and mailing lists is expected to follow the
+[code of conduct](https://github.com/fnando/email_typo/blob/main/CODE_OF_CONDUCT.md).
