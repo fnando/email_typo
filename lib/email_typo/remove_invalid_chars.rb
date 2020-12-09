@@ -4,9 +4,9 @@ module EmailTypo
   RemoveInvalidChars = lambda do |email|
     email
       .gsub(/(\s|[#`'"\\|])*/, "")
-      .gsub(%r{/}, ".")
+      .tr("/", ".")
       .gsub(/(,|\.\.)/, ".")
-      .gsub("!", "1")
+      .tr("!", "1")
       .gsub("@@", "@")
   end
 end

@@ -2,6 +2,6 @@
 
 module EmailTypo
   RemoveMailTo = lambda do |email|
-    email.gsub(/\Amailto:/, "")
+    email.delete_prefix("mailto:")
   end
 end
